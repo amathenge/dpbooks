@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12 text-center">
+        <h1 class="display-3 fw-bold">Digital Pencil Books</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12"><hr></div>
+</div>
+<div class="row mt-10">
+    <div class="col-sm-3 d-flex">
+        <div class="card flex-fill">
+            <div class="card-header text-center">
+                <strong>Manage Customers</strong>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Manage customers and clients</p>
+            </div>
+            <div class="card-footer d-grid">
+                <a class="btn btn-primary" href="{{ url_for('clients') }}">CUSTOMERS</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3 d-flex">
+        <div class="card flex-fill">
+            <div class="card-header text-center">
+                <strong>Create Invoices</strong>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Create invoices for services rendered, and other payments due</p>
+            </div>
+            <div class="card-footer d-grid">
+                <a class="btn btn-primary" href="{{ url_for('invoices') }}">INVOICES</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3 d-flex">
+        <div class="card flex-fill">
+            <div class="card-header text-center">
+                <strong>Receive Payments</strong>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Receive payments against invoices, or ad-hoc payments. Create receipts for payments received.</p>
+            </div>
+            <div class="card-footer d-grid">
+                <a class="btn btn-primary" href="{{ url_for('payments') }}">PAYMENTS</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3 d-flex">
+        <div class="card flex-fill">
+            <div class="card-header text-center">
+                <strong>Reports and Statements</strong>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Use this section to create custom reports, run standard reports or create statements for your clients</p>
+            </div>
+            <div class="card-footer d-grid">
+                <a class="btn btn-primary" href="{{ url_for('reports') }}">REPORTS</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

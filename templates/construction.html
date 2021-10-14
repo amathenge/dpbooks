@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% from 'f.j2' import nav %}
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        {{ nav() }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 text-center mt-5">
+        <p><span><img src="{{ url_for('static', filename='images/under-construction.png') }}" height="30px"></span>&nbsp;&nbsp;This Page is under construction</p>
+    </div>
+</div>
+
+{% endblock %}
