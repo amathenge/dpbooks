@@ -1,14 +1,26 @@
 {% extends 'base.html' %}
-{% from 'f.j2' import nav %}
+{% from 'f.j2' import nav, textfield, submitbutton, showdata %}
 {% block content %}
 <div class="row">
     <div class="col-12">
         {{ nav() }}
     </div>
 </div>
+
+<form>
+    <div class="row justify-content-center">
+        <div class="col-sm-8">
+            {{ textfield('clientname', 'Client Name') }}
+        </div>
+        <div class="col-sm-4">
+            {{ submitbutton('Get Client', class='btn btn-primary mt-4') }}
+        </div>
+    </div>
+</form>
+<hr>
 <div class="row">
-    <div class="col-12 text-center mt-5">
-        <p><span><img src="{{ url_for('static', filename='images/under-construction.png') }}" height="30px"></span>&nbsp;&nbsp;This Page is under construction</p>
+    <div class="col-sm-12">
+        {{ showdata(headers, data) }}
     </div>
 </div>
 

@@ -35,7 +35,13 @@ def home():
 
 @app.route('/clients')
 def clients():
-    return render_template('clients.html')
+    db = get_db()
+    cur = db.cursor()
+    sql = "select c.id, c.name, c.email, c.phone, a.line1 || ', ' || a.city from clients c left join address a on c.address = a.id"
+    cur.execute(sql)
+    data = cur.fetchall()
+    headers = data[0].keys()
+    return render_template('clients.html', headers=headers, data=list(data))
 
 @app.route('/invoices')
 def invoices():
