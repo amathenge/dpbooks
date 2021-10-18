@@ -9,19 +9,51 @@
 
 <form>
     <div class="row justify-content-center">
-        <div class="col-sm-8">
-            {{ textfield('clientname', 'Client Name') }}
-        </div>
-        <div class="col-sm-4">
-            {{ submitbutton('Get Client', class='btn btn-primary mt-4') }}
+        <div class="col-sm-12">
+            {{ textfield('clientname', 'Client Name', placeholder='Search by Client') }}
         </div>
     </div>
 </form>
 <hr>
 <div class="row">
     <div class="col-sm-12">
-        {{ showdata(headers, data) }}
+        {{ showdata(headers, data, 'clients') }}
     </div>
 </div>
+
+<script>
+    const clientname = document.querySelector("#clientname");
+    clientname.addEventListener('input', function() {
+        // Declare variables
+        var filter, table, tr, td, i, txtValue;
+
+        filter = this.value.toUpperCase().trim();
+
+        table = document.querySelector("#clients");
+        tr = table.querySelectorAll("tr");
+
+    /*
+        if (filter == "") {
+            // show all lines
+            for (i=0; i<tr.length; i++) {
+                tr[i].style.display="";
+            }
+            return;
+        }
+    */
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].querySelectorAll("td")[1];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    });
+</script>
 
 {% endblock %}

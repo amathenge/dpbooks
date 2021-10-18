@@ -1,7 +1,7 @@
 {%- macro textfield(name,label) %}
 <div class="form-group my-2">
     <label for="{{ name }}">{{ label }}</label>
-    <input type="text" class="form-control {{ kwargs['class'] }}" id="{{ name }}" name="{{ name }}" placeholder="{{ kwargs['placeholder'] }}" {{ kwargs['required'] }}>
+    <input type="text" class="form-control {{ kwargs['class'] }}" id="{{ name }}" name="{{ name }}" placeholder="{{ kwargs['placeholder'] }}" {{ kwargs['required'] }} {{ kwargs['onkeydown'] }}>
 </div>
 {% endmacro -%}
 
@@ -39,7 +39,7 @@
 <nav class="navbar navbar-expand-sm navbar-light bg-light border border-bottom-secondary">
 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav001" aria-controls="nav001" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
-</button>      
+</button>
 <div class="collapse navbar-collapse" id="nav001">
     <div class="navbar-nav">
     <a class="nav-item nav-link text-primary" href="{{ url_for('home') }}">Home</a>
@@ -55,8 +55,8 @@
 </nav>
 {%- endmacro %}
 
-{% macro showdata(headers, data) -%}
-<table class="table table-striped">
+{% macro showdata(headers, data, tblname) -%}
+<table class="table" id="{{ tblname }}" name="{{ tblname }}">
     <thead>
         <tr>
             {% for item in headers %}
@@ -70,6 +70,7 @@
             {% for item in row %}
             <td>{{ item|nl2br|safe }}</td>
             {% endfor %}
+            <td><a href="{{ url_for('clientedit', id=row[0]) }}">edit</a></td>
         </tr>
         {% endfor %}
     </tbody>

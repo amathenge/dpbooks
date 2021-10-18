@@ -37,11 +37,16 @@ def home():
 def clients():
     db = get_db()
     cur = db.cursor()
-    sql = "select c.id, c.name, c.email, c.phone, a.line1 || ', ' || a.city from clients c left join address a on c.address = a.id"
+    sql = "select c.id, c.name, c.email, c.phone, a.line1 || ', ' || a.city as address from clients c left join address a on c.address = a.id"
     cur.execute(sql)
     data = cur.fetchall()
     headers = data[0].keys()
+    headers.append('Action')
     return render_template('clients.html', headers=headers, data=list(data))
+
+@app.route('/clientedit/<id>', methods=['GET','POST'])
+def clientedit(id):
+    return render_template('clientedit.html')
 
 @app.route('/invoices')
 def invoices():
