@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 UPLOAD_FOLDER = '/home/aamathenge/dpbooks/files'
 LOG_FOLDER = '/home/aamathenge/dpbooks'
-ALLOWED_EXTENSIONS = {'pdf, xlsx, xls, doc, docx'}
+ALLOWED_EXTENSIONS = {'pdf, xlsx, xls'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['LOG_FOLDER'] = LOG_FOLDER
 app.config['SECRET_KEY'] = os.urandom(24)
